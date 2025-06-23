@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey to Excellence - Baneex Indonesia</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden; /* Mencegah gulir horizontal */
+        }
+        /* Gaya kustom untuk animasi halus */
+        .transition-all-ease {
+            transition: all 0.3s ease-in-out;
+        }
+        .hover\:scale-105:hover {
+            transform: scale(1.05);
+        }
+        .hover\:shadow-lg:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        /* Gaya untuk overlay menu mobile */
+        .mobile-menu-overlay {
+            background-color: rgba(0, 0, 0, 0.7);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 40; /* Di bawah header tetap, di atas konten */
+            display: none;
+        }
+        .mobile-menu-active .mobile-menu-overlay {
+            display: block;
+        }
+        .mobile-menu-active #mobile-menu {
+            transform: translateX(0); /* Menampilkan menu mobile */
+        }
+
+        /* Custom gradient for text and elements based on provided image */
+        .text-gradient {
+            background: linear-gradient(to right, #FF8C00, #FF004C); /* Orange to Red/Magenta */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent; /* Fallback for browsers that don't support text-fill-color */
+        }
+
+        .bg-gradient-main {
+            background: linear-gradient(to right, #FF8C00, #FF004C); /* Orange to Red/Magenta */
+        }
+        .bg-gradient-main-hover:hover {
+            background: linear-gradient(to right, #E07B00, #E00042); /* Slightly darker on hover */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-md py-4 px-6 md:px-12 fixed w-full z-50">
+        <nav class="container mx-auto flex justify-between items-center">
+            <!-- Nama Perusahaan (sekarang tanpa logo BX, warna gradient) -->
+            <a href="#home" class="text-xl md:text-2xl font-bold text-gradient">Baneex Indonesia</a>
+            <!-- Tautan Navigasi untuk Desktop -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-base hover:text-orange-500 font-medium transition-all-ease">Beranda</a>
+                <a href="#about-us" class="text-base hover:text-orange-500 font-medium transition-all-ease">Tentang Kami</a>
+                <a href="#why-join-us" class="text-base hover:text-orange-500 font-medium transition-all-ease">Mengapa Bergabung</a>
+                <a href="#culture" class="text-base hover:text-orange-500 font-medium transition-all-ease">Budaya Perusahaan</a>
+                <a href="#customers" class="text-base hover:text-orange-500 font-medium transition-all-ease">Pelanggan</a>
+                <a href="#jobs" class="text-base hover:text-orange-500 font-medium transition-all-ease">Lowongan</a>
+                <a href="#contact" class="text-base hover:text-orange-500 font-medium transition-all-ease">Kontak</a>
+            </div>
+            <!-- Tombol Menu Mobile -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Menu Mobile (Tersembunyi secara default, ditampilkan oleh JS) -->
+    <div id="mobile-menu" class="fixed top-0 right-0 w-64 h-full bg-white shadow-xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="p-6 flex justify-end">
+            <button id="close-mobile-menu" class="text-gray-600 hover:text-orange-500 focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-4 p-6">
+            <a href="#home" class="text-lg text-gray-800 hover:text-orange-500 font-medium transition-all-ease">Beranda</a>
+            <a href="#about-us" class="text-lg text-gray-800 hover:text-orange-500 font-medium transition-all-ease">Tentang Kami</a>
+            <a href="#why-join-us" class="text-lg text-gray-800 hover:text-orange-500 font-medium transition-all-ease">Mengapa Bergabung</a>
+            <a href="#culture" class="text-lg text-gray-800 hover:text-orange-500 font-medium transition-all-ease">Budaya Perusahaan</a>
+            <a href="#customers" class="text-lg text-gray-800 hover:text-orange-500 font-medium transition-all-ease">Pelanggan</a>
+            <a href="#jobs" class="text-lg text-gray-800 hover:text-orange-500 font-medium transition-all-ease">Lowongan</a>
+            <a href="#contact" class="text-lg text-gray-800 hover:text-orange-500 font-medium transition-all-ease">Kontak</a>
+        </nav>
+    </div>
+    <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+
+
+    <!-- Bagian Hero -->
+    <section id="home" class="relative h-screen flex items-center justify-center text-center overflow-hidden pt-16">
+        <!-- Latar Belakang Hero -->
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('pt_baneex_indonesia_cover.jpg');">
+            <div class="absolute inset-0 bg-gray-900 opacity-70"></div> <!-- Mengubah warna overlay sedikit ke abu-abu gelap -->
+        </div>
+        <div class="relative z-10 p-8 md:p-12 text-white max-w-4xl mx-auto rounded-lg">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 animate-fade-in-up">
+                Mulai Perjalanan Karir Unggul Anda Bersama<br><span class="text-3xl md:text-5xl text-gradient">Baneex Indonesia</span>
+            </h1>
+            <p class="text-lg md:text-xl mb-8 opacity-90 animate-fade-in-up delay-200">
+                Temukan peluang tak terbatas dan tumbuh bersama perusahaan terdepan di industri.
+            </p>
+            <a href="#jobs" class="inline-block bg-gradient-main bg-gradient-main-hover text-white font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all-ease animate-fade-in-up delay-400">
+                Lihat Lowongan
+            </a>
+        </div>
+    </section>
+
+    <!-- Bagian Kutipan Motivasi -->
+    <section class="py-16 md:py-24 bg-gradient-to-tr from-orange-50 to-red-50 text-center"> <!-- Mengubah warna gradient -->
+        <div class="container mx-auto px-6 md:px-12">
+            <blockquote class="text-2xl md:text-3xl italic font-medium text-gray-900 leading-relaxed max-w-3xl mx-auto">
+                "Setiap langkah adalah bagian dari perjalanan. Di Baneex Indonesia, kami percaya bahwa potensi terbesar Anda menanti untuk ditemukan dan dikembangkan."
+            </blockquote>
+            <p class="mt-6 text-lg font-semibold text-orange-700">- Sebuah Perjalanan Menuju Keunggulan</p>
+        </div>
+    </section>
+
+    <!-- Bagian Tentang Kami -->
+    <section id="about-us" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6 md:px-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+                Profil Perusahaan Baneex Indonesia
+            </h2>
+            <div class="max-w-4xl mx-auto text-base md:text-lg text-gray-700 leading-relaxed text-center">
+                <p class="mb-4">
+                    PT Baneex Indonesia adalah perusahaan yang bergerak di bidang Manufacturing Spring dan Assembly yang didirikan pada bulan Januari 2007. Kami berlokasi di Jl. Toyogiri RT. 002 RW.03 – Kp.Legon Kel. Jatimulya Kec. Tambun Selatan, Kab. Bekasi, dengan luas bangunan sebesar 576 M2.
+                </p>
+                <p class="mb-4">
+                    Sebagai produsen komponen Otomotif dan Elektronik, kami mempunyai komitmen untuk selalu memberikan produk dan layanan terbaik yang mampu memenuhi dan menterjemahkan keinginan pelanggan. Komitmen ini dipegang oleh seluruh jajaran manajemen, mulai dari Top Management, Middle Management, dan seluruh karyawan yang bekerja di PT Baneex Indonesia.
+                </p>
+                <p class="mt-8 text-center">
+                    Untuk informasi lebih lanjut tentang profil perusahaan kami, silakan kunjungi: <a href="https://baneexindonesia.com/" target="_blank" class="text-orange-600 hover:underline font-semibold">baneexindonesia.com</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Visi & Misi -->
+    <section class="py-16 md:py-24 bg-gradient-to-br from-orange-50 to-white"> <!-- Mengubah warna gradient -->
+        <div class="container mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="text-center md:text-left">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                    Visi & Misi Kami
+                </h2>
+                <h3 class="text-2xl font-semibold text-orange-700 mb-4">Visi</h3>
+                <p class="text-base md:text-lg text-gray-700 leading-relaxed mb-8">
+                    Menjadi mitra utama Perusahaan Otomotif dan elektronik yang kompetitif dan handal dalam mutu dan layanan.
+                </p>
+
+                <h3 class="text-2xl font-semibold text-orange-700 mb-4">Misi</h3>
+                <ul class="text-base md:text-lg text-gray-700 leading-relaxed space-y-3">
+                    <li>
+                        <span class="font-bold text-orange-600">Innovations:</span> Selalu melakukan inovasi secara berkesinambungan baik proses teknik maupun kinerja karyawan.
+                    </li>
+                    <li>
+                        <span class="font-bold text-orange-600">Jaminan Mutu:</span> Menetapkan kerangka kerja proses peningkatan mutu yang sistematis dan terorganisir dengan membakukan proses guna memastikan konsistensi dan mampu telusur serta meningkatkan hubungan antar fungsi yang dapat mempengaruhi mutu.
+                    </li>
+                    <li>
+                        <span class="font-bold text-orange-600">Kepuasan Pelanggan:</span> Selalu memberikan produk dan layanan terbaik bagi pelanggan.
+                    </li>
+                    <li>
+                        <span class="font-bold text-orange-600">Kompetitif:</span> Meningkatkan produktivitas dan mutu produk serta layanan dengan memenuhi persyaratan pelanggan melalui kerjasama dan komunikasi yang baik, pengendalian bisnis dan penurunan pemborosan yang diakibatkan dari mutu kerja yang buruk.
+                    </li>
+                </ul>
+            </div>
+            <div class="flex justify-center md:justify-end">
+                <img src="https://placehold.co/500x300/FF5733/FFFFFF?text=Visi+dan+Misi+Baneex" alt="Visi Misi Baneex" class="rounded-xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all-ease">
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Mengapa Bergabung dengan Kami? -->
+    <section id="why-join-us" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6 md:px-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+                Mengapa Bergabung dengan Baneex Indonesia?
+            </h2>
+
+            <!-- Nilai-Nilai Perusahaan -->
+            <div class="mb-16">
+                <h3 class="text-2xl md:text-3xl font-semibold text-center text-orange-700 mb-8">
+                    Nilai-Nilai Inti Kami
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Nilai 1 -->
+                    <div class="bg-orange-50 p-6 rounded-lg shadow-md text-center border-l-4 border-orange-500 hover:shadow-lg transition-all-ease">
+                        <div class="text-orange-600 mb-4">
+                            <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Inovasi</h4>
+                        <p class="text-base text-gray-700">Mendorong pemikiran baru dan solusi kreatif untuk tantangan masa depan.</p>
+                    </div>
+                    <!-- Nilai 2 -->
+                    <div class="bg-orange-50 p-6 rounded-lg shadow-md text-center border-l-4 border-orange-500 hover:shadow-lg transition-all-ease">
+                        <div class="text-orange-600 mb-4">
+                            <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H2v-2a3 3 0 015.356-1.857m7.5 1.857A2.25 2.25 0 0012 13.5V12c0-1.03-.428-2.03-1.125-2.75L9 7.5l-1.5 1.5M7.5 14.5c.34-.14.654-.339.957-.577l2.25-2.25L13.5 12"></path></svg>
+                        </div>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Kolaborasi</h4>
+                        <p class="text-base text-gray-700">Kerja tim yang kuat adalah kunci keberhasilan kami.</p>
+                    </div>
+                    <!-- Nilai 3 -->
+                    <div class="bg-orange-50 p-6 rounded-lg shadow-md text-center border-l-4 border-orange-500 hover:shadow-lg transition-all-ease">
+                        <div class="text-orange-600 mb-4">
+                            <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Keunggulan</h4>
+                        <p class="text-base text-gray-700">Berkomitmen pada standar tertinggi dalam setiap aspek pekerjaan.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manfaat & Tunjangan -->
+            <div class="mb-16">
+                <h3 class="text-2xl md:text-3xl font-semibold text-center text-orange-700 mb-8">
+                    Manfaat & Tunjangan
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Manfaat 1 -->
+                    <div class="flex items-start bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-all-ease">
+                        <div class="text-orange-500 mr-4 flex-shrink-0">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2-3-.895-3-2 1.343-2 3-2zM12 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2-1.343-2-3-2z"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-900 mb-1">Asuransi Kesehatan Komprehensif</h4>
+                            <p class="text-base text-gray-700">Perlindungan kesehatan untuk Anda dan keluarga.</p>
+                        </div>
+                    </div>
+                    <!-- Manfaat 2 -->
+                    <div class="flex items-start bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-all-ease">
+                        <div class="text-orange-500 mr-4 flex-shrink-0">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-900 mb-1">Peluang Pengembangan Karir</h4>
+                            <p class="text-base text-gray-700">Program pelatihan dan mentorship yang berkesinambungan.</p>
+                        </div>
+                    </div>
+                    <!-- Manfaat 3 -->
+                    <div class="flex items-start bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-all-ease">
+                        <div class="text-orange-500 mr-4 flex-shrink-0">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-900 mb-1">Jam Kerja Fleksibel</h4>
+                            <p class="text-base text-gray-700">Keseimbangan hidup dan kerja yang lebih baik.</p>
+                        </div>
+                    </div>
+                    <!-- Manfaat 4 -->
+                    <div class="flex items-start bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-all-ease">
+                        <div class="text-orange-500 mr-4 flex-shrink-0">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-900 mb-1">Bonus Kinerja Tahunan</h4>
+                            <p class="text-base text-gray-700">Penghargaan atas kontribusi dan dedikasi Anda.</p>
+                        </div>
+                    </div>
+                    <!-- Manfaat 5 -->
+                    <div class="flex items-start bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-all-ease">
+                        <div class="text-orange-500 mr-4 flex-shrink-0">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21H6.68a2 2 0 01-1.789-2.894l3.5-7A2 2 0 019.01 10H14zm0 0V9.349A1.353 1.353 0 0012.651 8H11V6.651A1.353 1.353 0 009.651 5H9a2 2 0 00-2 2v3"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-900 mb-1">Lingkungan Kerja Positif</h4>
+                            <p class="text-base text-gray-700">Tim yang suportif dan budaya yang inklusif.</p>
+                        </div>
+                    </div>
+                    <!-- Manfaat 6 -->
+                    <div class="flex items-start bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-all-ease">
+                        <div class="text-orange-500 mr-4 flex-shrink-0">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.09 9.09a3 3 0 104.242 4.242M12 17.25h.008v.008H12z"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-900 mb-1">Kegiatan Sosial & Rekreasi</h4>
+                            <p class="text-base text-gray-700">Acara kebersamaan dan kegiatan tim yang menyenangkan.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimoni Karyawan -->
+            <div>
+                <h3 class="text-2xl md:text-3xl font-semibold text-center text-orange-700 mb-8">
+                    Kata Mereka yang Sudah Bergabung
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Testimoni 1 -->
+                    <div class="bg-orange-50 p-6 rounded-lg shadow-md flex flex-col items-center text-center hover:shadow-lg transition-all-ease">
+                        <img src="https://placehold.co/100x100/FFB347/000000?text=GA" alt="Foto Karyawan Gengki Ananda" class="w-24 h-24 rounded-full mb-4 object-cover border-4 border-orange-300">
+                        <p class="text-base italic text-gray-800 mb-4">"Baneex Indonesia telah memberikan saya kesempatan luar biasa untuk mengembangkan karir. Lingkungan kerja yang suportif dan budaya inovatif adalah nilai tambah yang besar!"</p>
+                        <p class="font-semibold text-gray-900">- Gengki Ananda</p>
+                        <p class="text-sm text-gray-600">Manajer Pemasaran</p>
+                    </div>
+                    <!-- Testimoni 2 -->
+                    <div class="bg-orange-50 p-6 rounded-lg shadow-md flex flex-col items-center text-center hover:shadow-lg transition-all-ease">
+                        <img src="https://placehold.co/100x100/FFB347/000000?text=IW" alt="Foto Karyawan Iwan" class="w-24 h-24 rounded-full mb-4 object-cover border-4 border-orange-300">
+                        <p class="text-base italic text-gray-800 mb-4">"Di Baneex, saya terlibat langsung dalam pengembangan efisiensi produksi modern. Ini adalah tempat yang dinamis untuk berinovasi dan melihat dampak nyata dari pekerjaan saya."</p>
+                        <p class="font-semibold text-gray-900">- Iwan</p>
+                        <p class="text-sm text-gray-600">Spesialis Efisiensi Produksi</p>
+                    </div>
+                    <!-- Testimoni 3 -->
+                    <div class="bg-orange-50 p-6 rounded-lg shadow-md flex flex-col items-center text-center hover:shadow-lg transition-all-ease">
+                        <img src="https://placehold.co/100x100/FFB347/000000?text=HS" alt="Foto Karyawan Hotben Sinaga" class="w-24 h-24 rounded-full mb-4 object-cover border-4 border-orange-300">
+                        <p class="text-base italic text-gray-800 mb-4">"Tim HR sangat responsif dan proses rekrutmennya transparan. Saya sangat senang menjadi bagian dari keluarga Baneex!"</p>
+                        <p class="font-semibold text-gray-900">- Hotben Sinaga</p>
+                        <p class="text-sm text-gray-600">Spesialis Rekrutmen</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Budaya Perusahaan -->
+    <section id="culture" class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-6 md:px-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+                Budaya Perusahaan Kami
+            </h2>
+
+            <!-- Deskripsi Budaya Perusahaan -->
+            <div class="max-w-4xl mx-auto text-base md:text-lg text-gray-700 leading-relaxed text-center mb-16">
+                <p class="mb-4">
+                    Di Baneex Indonesia, kami sangat menjunjung tinggi budaya yang mendorong pertumbuhan dan keunggulan. Kami berkomitmen untuk:
+                </p>
+                <ul class="list-disc list-inside text-left mx-auto max-w-lg space-y-2">
+                    <li>Pelatihan Kerja yang Efisien: Kami menyediakan program pelatihan berkelanjutan untuk memastikan setiap karyawan memiliki keterampilan terbaik dan terkini, mendorong efisiensi dan inovasi di setiap aspek pekerjaan.</li>
+                    <li>Kerja Sama Tim yang Saling Membantu: Lingkungan kami didasari oleh semangat kolaborasi, di mana setiap individu saling mendukung dan berkontribusi untuk mencapai tujuan bersama.</li>
+                    <li>Lingkungan Kerja yang Sangat Positif: Kami menciptakan suasana kerja yang suportif, inklusif, dan inspiratif, tempat setiap karyawan merasa dihargai dan termotivasi untuk memberikan yang terbaik.</li>
+                    <li>Komitmen pada Kualitas dan Kuantitas: Kami memastikan bahwa setiap produk yang kami hasilkan tidak hanya memenuhi standar kualitas tertinggi, tetapi juga diproduksi secara efisien untuk memenuhi kebutuhan pasar dengan optimal.</li>
+                </ul>
+            </div>
+
+            <!-- Bagian "Momen Kebersamaan di Baneex" (dihapus) -->
+
+            <!-- "Sehari di Baneex" -->
+            <div>
+                <h3 class="text-2xl md:text-3xl font-semibold text-center text-orange-700 mb-8">
+                    Sehari di Baneex: Kisah dari Karyawan Kami
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all-ease">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Membangun Presisi: Kisah Seorang Teknisi Produksi</h4>
+                        <p class="text-base text-gray-700 mb-4">"Sebagai Teknisi Produksi di Baneex Indonesia, saya bangga menjadi bagian dari tim yang menciptakan komponen otomotif dan elektronik dengan presisi tinggi. Setiap hari adalah tentang memastikan kualitas dan efisiensi di lini produksi kami."</p>
+                        <a href="#" class="text-orange-600 hover:text-orange-800 font-medium">Baca Kisah Lengkap &rarr;</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all-ease">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Inovasi di Balik Produk: Kisah Quality Control Specialist</h4>
+                        <p class="text-base text-gray-700 mb-4">"Peran saya sebagai Spesialis Quality Control sangat krusial untuk memastikan setiap produk yang keluar dari pabrik Baneex memenuhi standar tertinggi. Kami terus berinovasi dalam proses untuk memberikan jaminan mutu terbaik bagi pelanggan."</p>
+                        <a href="#" class="text-orange-600 hover:text-orange-800 font-medium">Baca Kisah Lengkap &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Daftar Pelanggan -->
+    <section id="customers" class="py-16 md:py-24 bg-gradient-to-tr from-gray-50 to-white">
+        <div class="container mx-auto px-6 md:px-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+                Daftar Pelanggan Kami
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease">
+                    <p class="text-base font-semibold text-gray-800">PT. TS TECH INDONESIA</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease">
+                    <p class="text-base font-semibold text-gray-800">PT. ICHIKOH INDONESIA</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease">
+                    <p class="text-base font-semibold text-gray-800">PT. CIPTA MANDIRI WIRA SAKTI</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease">
+                    <p class="text-base font-semibold text-gray-800">PT. FUJI SPRING INDONESIA</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease">
+                    <p class="text-base font-semibold text-gray-800">PT. DARMA CONTROL CABLE INDONESIA</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease">
+                    <p class="text-base font-semibold text-gray-800">PT. INDOMATSUMOTO</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease">
+                    <p class="text-base font-semibold text-gray-800">PT. MEKAR ARMADA JAYA</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease">
+                    <p class="text-base font-semibold text-gray-800">PT. INTI POLYMETAL</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease">
+                    <p class="text-base font-semibold text-gray-800">PT. ASIA AFRIKA PLASTIK</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease">
+                    <p class="text-base font-semibold text-gray-800">PT. METINDO ERA SAKTI</p>
+                </div>
+                <!-- New Customer Names Added Below -->
+                <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease">
+                    <p class="text-base font-semibold text-gray-800">PT. RACHMAT PERDANA ADHIMETAL</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease">
+                    <p class="text-base font-semibold text-gray-800">PT. SARANA UNGGUL PRATAMA</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease">
+                    <p class="text-base font-semibold text-gray-800">PT. ANUGRAH CIPTA 9</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease">
+                    <p class="text-base font-semibold text-gray-800">PT. TRI CENTRUM FORTUNA</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease">
+                    <p class="text-base font-semibold text-gray-800">PT. DAECHANG</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Proses Rekrutmen -->
+    <section class="py-16 md:py-24 bg-gradient-to-tl from-orange-50 to-white"> <!-- Mengubah warna gradient -->
+        <div class="container mx-auto px-6 md:px-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+                Proses Rekrutmen yang Transparan
+            </h2>
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-8 md:space-y-0 md:space-x-12">
+                <!-- Langkah 1 -->
+                <div class="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-lg w-full md:w-1/4 transform hover:scale-105 transition-all-ease">
+                    <div class="bg-gradient-main text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mb-4">1</div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Aplikasi Online</h3>
+                    <p class="text-base text-gray-700">Kirim CV dan lamaran Anda melalui portal kami.</p>
+                </div>
+                <!-- Ikon Panah -->
+                <div class="hidden md:block text-orange-500">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </div>
+                <!-- Langkah 2 -->
+                <div class="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-lg w-full md:w-1/4 transform hover:scale-105 transition-all-ease">
+                    <div class="bg-gradient-main text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mb-4">2</div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Wawancara & Tes</h3>
+                    <p class="text-base text-gray-700">Sesi wawancara dan mungkin tes kemampuan.</p>
+                </div>
+                <!-- Ikon Panah -->
+                <div class="hidden md:block text-orange-500">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </div>
+                <!-- Langkah 3 -->
+                <div class="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-lg w-full md:w-1/4 transform hover:scale-105 transition-all-ease">
+                    <div class="bg-gradient-main text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mb-4">3</div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Penawaran & Bergabung</h3>
+                    <p class="text-base text-gray-700">Selamat! Anda siap memulai perjalanan Anda.</p>
+                </div>
+            </div>
+
+            <!-- Bagian FAQ -->
+            <div class="mt-16">
+                <h3 class="text-2xl md:text-3xl font-semibold text-center text-orange-700 mb-8">
+                    Pertanyaan yang Sering Diajukan (FAQ)
+                </h3>
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <!-- Item FAQ 1 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Bagaimana cara mengajukan lamaran?</h4>
+                        <p class="text-base text-gray-700">Anda dapat mengajukan lamaran langsung melalui halaman lowongan kami dengan mengklik tombol "Lamar Sekarang" pada posisi yang Anda minati.</p>
+                    </div>
+                    <!-- Item FAQ 2 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Berapa lama proses rekrutmen berlangsung?</h4>
+                        <p class="text-base text-gray-700">Durasi proses rekrutmen bervariasi tergantung posisi, namun kami berusaha menyelesaikannya dalam 2-4 minggu setelah aplikasi awal.</p>
+                    </div>
+                    <!-- Item FAQ 3 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Apakah ada program magang di Baneex Indonesia?</h4>
+                        <p class="text-base text-gray-700">Ya, kami memiliki program magang yang terbuka untuk mahasiswa dan lulusan baru. Informasi lebih lanjut dapat ditemukan di halaman lowongan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Pencarian & Daftar Lowongan -->
+    <section id="jobs" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6 md:px-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+                Temukan Lowongan Karir Anda
+            </h2>
+
+            <!-- Bilah Pencarian dan Filter Lowongan -->
+            <div class="max-w-4xl mx-auto bg-orange-50 p-6 rounded-lg shadow-md mb-12"> <!-- Mengubah warna background -->
+                <div class="flex flex-col md:flex-row gap-4 mb-4">
+                    <input type="text" placeholder="Cari posisi atau kata kunci..." class="flex-grow p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 text-base">
+                    <select class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 text-base">
+                        <option value="">Semua Bidang</option>
+                        <option value="produksi">Produksi</option>
+                        <option value="hr">Manajemen HR</option>
+                        <option value="akuntansi">Manajemen Akuntansi</option>
+                        <option value="pemasaran">Manajemen Pemasaran</option>
+                        <option value="quality-control">Quality Control</option>
+                        <option value="admin-warehouse">Admin Warehouse</option>
+                        <option value="maintenance">Maintenance</option>
+                        <option value="pemagangan">Pemagangan (Mahasiswa/Umum)</option>
+                    </select>
+                    <select class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 text-base">
+                        <option value="bekasi">Bekasi (Jl. Toyogiri)</option>
+                    </select>
+                </div>
+                <button class="w-full bg-gradient-main bg-gradient-main-hover text-white font-bold py-3 px-6 rounded-md shadow-lg transform hover:scale-105 transition-all-ease text-lg">
+                    Cari Lowongan
+                </button>
+            </div>
+
+            <!-- Daftar Lowongan -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Kartu Lowongan 1: Produksi -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-orange-500 hover:shadow-lg hover:scale-105 transition-all-ease flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Supervisor Produksi</h3>
+                        <p class="text-base text-gray-700 mb-4">Bertanggung jawab mengawasi dan mengkoordinasikan kegiatan produksi untuk mencapai target efisiensi dan kualitas.</p>
+                    </div>
+                    <div class="mt-4">
+                        <span class="inline-block bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full mr-2 mb-2">Produksi</span>
+                        <span class="inline-block bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full mr-2 mb-2">Bekasi</span>
+                        <span class="inline-block bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full mb-2">Penuh Waktu</span>
+                        <a href="https://forms.gle/McCCuXuxBaHWFkxb9" target="_blank" class="block mt-4 text-orange-600 hover:text-orange-800 font-medium">Lamar Sekarang &rarr;</a>
+                    </div>
+                </div>
+                <!-- Kartu Lowongan 2: Manajemen HR -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-orange-500 hover:shadow-lg hover:scale-105 transition-all-ease flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Staf HR & GA</h3>
+                        <p class="text-base text-gray-700 mb-4">Mendukung kegiatan administrasi HR dan general affairs, termasuk rekrutmen dan kepatuhan.</p>
+                    </div>
+                    <div class="mt-4">
+                        <span class="inline-block bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full mr-2 mb-2">Manajemen HR</span>
+                        <span class="inline-block bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full mr-2 mb-2">Bekasi</span>
+                        <span class="inline-block bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full mb-2">Penuh Waktu</span>
+                        <a href="https://forms.gle/McCCuXuxBaHWFkxb9" target="_blank" class="block mt-4 text-orange-600 hover:text-orange-800 font-medium">Lamar Sekarang &rarr;</a>
+                    </div>
+                </div>
+                <!-- Kartu Lowongan 3: Manajemen Akuntansi -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-orange-500 hover:shadow-lg hover:scale-105 transition-all-ease flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Akuntan Junior</h3>
+                        <p class="text-base text-gray-700 mb-4">Melakukan pencatatan transaksi keuangan, penyusunan laporan, dan tugas akuntansi lainnya.</p>
+                    </div>
+                    <div class="mt-4">
+                        <span class="inline-block bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full mr-2 mb-2">Manajemen Akuntansi</span>
+                        <span class="inline-block bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full mr-2 mb-2">Bekasi</span>
+                        <span class="inline-block bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full mb-2">Penuh Waktu</span>
+                        <a href="https://forms.gle/McCCuXuxBaHWFkxb9" target="_blank" class="block mt-4 text-orange-600 hover:text-orange-800 font-medium">Lamar Sekarang &rarr;</a>
+                    </div>
+                </div>
+                 <!-- Kartu Lowongan 4: Manajemen Pemasaran -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-orange-500 hover:shadow-lg hover:scale-105 transition-all-ease flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Spesialis Pemasaran Digital</h3>
+                        <p class="text-base text-gray-700 mb-4">Merencanakan dan melaksanakan strategi pemasaran digital untuk meningkatkan visibilitas perusahaan.</p>
+                    </div>
+                    <div class="mt-4">
+                        <span class="inline-block bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full mr-2 mb-2">Manajemen Pemasaran</span>
+                        <span class="inline-block bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full mr-2 mb-2">Bekasi</span>
+                        <span class="inline-block bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full mb-2">Penuh Waktu</span>
+                        <a href="https://forms.gle/McCCuXuxBaHWFkxb9" target="_blank" class="block mt-4 text-orange-600 hover:text-orange-800 font-medium">Lamar Sekarang &rarr;</a>
+                    </div>
+                </div>
+                <!-- Kartu Lowongan 5: Quality Control -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-orange-500 hover:shadow-lg hover:scale-105 transition-all-ease flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Inspektor Quality Control</h3>
+                        <p class="text-base text-gray-700 mb-4">Melakukan inspeksi kualitas produk di setiap tahap produksi untuk memastikan standar terpenuhi.</p>
+                    </div>
+                    <div class="mt-4">
+                        <span class="inline-block bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full mr-2 mb-2">Quality Control</span>
+                        <span class="inline-block bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full mr-2 mb-2">Bekasi</span>
+                        <span class="inline-block bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full mb-2">Penuh Waktu</span>
+                        <a href="https://forms.gle/McCCuXuxBaHWFkxb9" target="_blank" class="block mt-4 text-orange-600 hover:text-orange-800 font-medium">Lamar Sekarang &rarr;</a>
+                    </div>
+                </div>
+                <!-- Kartu Lowongan 6: Admin Warehouse -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-orange-500 hover:shadow-lg hover:scale-105 transition-all-ease flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Admin Warehouse</h3>
+                        <p class="text-base text-gray-700 mb-4">Mengelola data inventaris, mengatur pengiriman, dan memastikan kelancaran operasional gudang.</p>
+                    </div>
+                    <div class="mt-4">
+                        <span class="inline-block bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full mr-2 mb-2">Admin Warehouse</span>
+                        <span class="inline-block bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full mr-2 mb-2">Bekasi</span>
+                        <span class="inline-block bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full mb-2">Penuh Waktu</span>
+                        <a href="https://forms.gle/McCCuXuxBaHWFkxb9" target="_blank" class="block mt-4 text-orange-600 hover:text-orange-800 font-medium">Lamar Sekarang &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Kartu Lowongan 7: Maintenance -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-orange-500 hover:shadow-lg hover:scale-105 transition-all-ease flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Staf Maintenance</h3>
+                        <p class="text-base text-gray-700 mb-4">Bertanggung jawab untuk pemeliharaan mesin dan fasilitas pabrik untuk memastikan operasional yang lancar.</p>
+                    </div>
+                    <div class="mt-4">
+                        <span class="inline-block bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full mr-2 mb-2">Maintenance</span>
+                        <span class="inline-block bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full mr-2 mb-2">Bekasi</span>
+                        <span class="inline-block bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full mb-2">Penuh Waktu</span>
+                        <a href="https://forms.gle/McCCuXuxBaHWFkxb9" target="_blank" class="block mt-4 text-orange-600 hover:text-orange-800 font-medium">Lamar Sekarang &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Kartu Lowongan 8: Pemagangan -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-orange-500 hover:shadow-lg hover:scale-105 transition-all-ease flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Program Pemagangan</h3>
+                        <p class="text-base text-gray-700 mb-4">Kesempatan bagi mahasiswa atau umum untuk mendapatkan pengalaman kerja praktis di berbagai departemen kami.</p>
+                    </div>
+                    <div class="mt-4">
+                        <span class="inline-block bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full mr-2 mb-2">Pemagangan</span>
+                        <span class="inline-block bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full mr-2 mb-2">Bekasi</span>
+                        <span class="inline-block bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full mb-2">Paruh Waktu/Fleksibel</span>
+                        <a href="https://forms.gle/McCCuXuxBaHWFkxb9" target="_blank" class="block mt-4 text-orange-600 hover:text-orange-800 font-medium">Lamar Sekarang &rarr;</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Tombol Lihat Semua Lowongan -->
+            <div class="text-center mt-12">
+                <a href="https://forms.gle/McCCuXuxBaHWFkxb9" target="_blank" class="inline-block bg-gradient-main bg-gradient-main-hover text-white font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all-ease text-lg">
+                    Lihat Semua Lowongan
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Sertifikasi ISO -->
+    <section id="certification" class="py-16 md:py-24 bg-white text-center">
+        <div class="container mx-auto px-6 md:px-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+                Sertifikasi Kami
+            </h2>
+            <div class="max-w-xl mx-auto bg-gray-100 p-8 rounded-lg shadow-lg border-2 border-green-500">
+                <div class="text-green-600 mb-4">
+                    <svg class="w-20 h-20 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <h3 class="text-2xl font-semibold text-gray-900 mb-4">ISO 9001:2015 Certified</h3>
+                <p class="text-base text-gray-700">
+                    Baneex Indonesia bangga memiliki Sertifikat ISO 9001:2015, sebuah bukti komitmen kami terhadap standar mutu dan layanan terbaik.
+                </p>
+                <img src="https://placehold.co/200x200/90EE90/000000?text=ISO+9001" alt="Sertifikat ISO 9001:2015" class="mt-6 mx-auto w-32 h-32 object-contain">
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Call to Action -->
+    <section class="py-16 md:py-24 bg-gradient-main text-white text-center"> <!-- Mengubah warna background -->
+        <div class="container mx-auto px-6 md:px-12">
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">
+                Mulai Perjalanan Anda Menuju Keunggulan Hari Ini!
+            </h2>
+            <p class="text-lg md:text-xl opacity-90 mb-8 max-w-2xl mx-auto">
+                Kami mencari individu berbakat dan bersemangat untuk bergabung dengan tim kami.
+            </p>
+            <a href="https://forms.gle/McCCuXuxBaHWFkxb9" target="_blank" class="inline-block bg-white text-orange-700 font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 hover:bg-gray-100 transition-all-ease text-lg">
+                Lamar Sekarang
+            </a>
+        </div>
+    </section>
+
+    <!-- Bagian Footer -->
+    <footer id="contact" class="bg-gray-900 text-gray-300 py-12 px-6 md:px-12">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Info Perusahaan -->
+            <div>
+                <h3 class="text-xl font-bold text-white mb-4">Baneex Indonesia</h3>
+                <p class="text-base mb-2">Jl. Toyogiri RT. 002 RW.03 – Kp.Legon Kel. Jatimulya Kec. Tambun Selatan. Kab. Bekasi</p>
+                <p class="text-base mb-2">Email Rekrutmen: <a href="mailto:rekrutmenptbaneexindonesia@gmail.com" class="text-orange-400 hover:underline">rekrutmenptbaneexindonesia@gmail.com</a></p>
+                <p class="text-base">Telepon: <a href="tel:+6281213102500" class="text-orange-400 hover:underline">0812-1310-2500</a></p>
+                <!-- Google Maps Link and Placeholder Image -->
+                <p class="mt-4 text-base">
+                    <a href="https://maps.app.goo.gl/FghXZB3djb5vk6Xq9" target="_blank" class="text-orange-400 hover:underline font-semibold">Lihat Lokasi Kami di Google Maps</a>
+                </p>
+                <img src="https://placehold.co/200x150/C0C0C0/333333?text=Google+Maps" alt="Lokasi Baneex Indonesia di Google Maps" class="mt-2 rounded-lg shadow-md">
+            </div>
+            <!-- Tautan Cepat -->
+            <div>
+                <h3 class="text-xl font-bold text-white mb-4">Tautan Cepat</h3>
+                <ul>
+                    <li class="mb-2"><a href="#home" class="text-base hover:text-orange-400 transition-colors">Beranda</a></li>
+                    <li class="mb-2"><a href="#about-us" class="text-base hover:text-orange-400 transition-colors">Tentang Kami</a></li>
+                    <li class="mb-2"><a href="#why-join-us" class="text-base hover:text-orange-400 transition-colors">Mengapa Kami</a></li>
+                    <li class="mb-2"><a href="#culture" class="text-base hover:text-orange-400 transition-colors">Budaya</a></li>
+                    <li class="mb-2"><a href="#customers" class="text-base hover:text-orange-400 transition-colors">Pelanggan</a></li>
+                    <li class="mb-2"><a href="#jobs" class="text-base hover:text-orange-400 transition-colors">Lowongan</a></li>
+                </ul>
+            </div>
+            <!-- Media Sosial -->
+            <div>
+                <h3 class="text-xl font-bold text-white mb-4">Ikuti Kami</h3>
+                <div class="flex space-x-4">
+                    <a href="https://id.linkedin.com/company/pt-baneex-indonesia" target="_blank" class="text-gray-300 hover:text-orange-400 transition-colors">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+                            <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-500">
+            <p class="mb-2">Powered by <a href="https://instagram.com/idrchy15_" target="_blank" class="text-orange-400 hover:underline">Instagram idrchy15_</a></p>
+            &copy; 2025 Baneex Indonesia. Semua Hak Cipta Dilindungi.
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling untuk tautan navigasi
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#' || href === '') { // Menangani href kosong atau hanya '#'
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' }); // Gulir ke atas
+                } else {
+                    const targetElement = document.querySelector(href);
+                    if (targetElement) { // Memastikan elemen target ada
+                        e.preventDefault();
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                        // Tutup menu mobile jika terbuka setelah mengklik tautan
+                        const mobileMenu = document.getElementById('mobile-menu');
+                        const body = document.body;
+                        if (mobileMenu.classList.contains('translate-x-0')) {
+                            mobileMenu.classList.remove('translate-x-0');
+                            mobileMenu.classList.add('translate-x-full');
+                            body.classList.remove('mobile-menu-active');
+                        }
+                    }
+                }
+            });
+        });
+
+        // Fungsionalitas toggle menu mobile
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const body = document.body;
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('translate-x-full');
+            mobileMenu.classList.add('translate-x-0');
+            mobileMenu.classList.remove('hidden'); // Memastikan tidak tersembunyi
+            body.classList.add('mobile-menu-active');
+        });
+
+        closeMobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('translate-x-0');
+            mobileMenu.classList.add('translate-x-full');
+            // Tunda menyembunyikan tampilan sampai transisi selesai untuk menghindari flicker
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+            }, 300); // Harus sesuai dengan durasi transisi
+            body.classList.remove('mobile-menu-active');
+        });
+
+        mobileMenuOverlay.addEventListener('click', () => {
+            closeMobileMenuButton.click(); // Mensimulasikan klik pada tombol tutup
+        });
+    </script>
+</body>
+</html>
