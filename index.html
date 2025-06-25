@@ -10,6 +10,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Font "Inter" - Ensures consistent typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Animate.css CDN - Used for scroll animations and header animation -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         /* Custom styles for the body to apply Inter font and smooth font rendering */
         body {
@@ -85,16 +87,28 @@
         .delay-400 {
             animation-delay: 0.4s;
         }
+
+        /* Initial state for elements that will be animated on scroll */
+        /* They are hidden by default and transform slightly down */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(20px);
+            /* Important: Keep transitions off until Animate.css takes over */
+            transition: none;
+        }
+
+        /* When 'animated' class is added by JS, Animate.css classes will take effect */
+        /* The animate.css classes (e.g., animate__bounceInUp) handle the actual animation */
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-    <!-- Header Section - Fixed at the top with shadow -->
-    <header class="bg-white shadow-md py-4 px-6 md:px-12 fixed w-full z-50">
+    <!-- Header Section - Fixed at the top with shadow, animated on load -->
+    <header class="bg-white shadow-md py-4 px-6 md:px-12 fixed w-full z-50 animate__animated animate__zoomIn">
         <nav class="container mx-auto flex justify-between items-center">
             <!-- Company Name with Logo (using text gradient for branding) -->
             <a href="#home" class="flex items-center space-x-2">
-                <img src="https://www.baneexindonesia.com/baneex.jpg" alt="Baneex Indonesia Logo" class="h-8 md:h-10 object-contain">
+                <img src="https://www.baneexindonesia.com/baneex.jpg" alt="Logo Baneex Indonesia" class="h-8 md:h-10 object-contain">
                 <span class="text-xl md:text-2xl font-bold text-gradient">Baneex Indonesia</span>
             </a>
             <!-- Desktop Navigation Links - Hidden on small screens -->
@@ -150,7 +164,7 @@
         </div>
         <!-- Hero Content -->
         <div class="relative z-10 p-8 md:p-12 text-white max-w-4xl mx-auto rounded-lg">
-            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 animate-fade-in-up">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 animate__animated animate__zoomIn">
                 Mulai Perjalanan Karir Unggul Anda Bersama<br><span class="text-3xl md:text-5xl text-gradient">Baneex Indonesia</span>
             </h1>
             <p class="text-lg md:text-xl mb-8 opacity-90 animate-fade-in-up delay-200">
@@ -163,8 +177,8 @@
         </div>
     </section>
 
-    <!-- Motivational Quote Section - Light gradient background -->
-    <section class="py-16 md:py-24 bg-gradient-to-tr from-orange-50 to-red-50 text-center">
+    <!-- Motivational Quote Section - Light gradient background, animated on scroll -->
+    <section class="py-16 md:py-24 bg-gradient-to-tr from-orange-50 to-red-50 text-center scroll-animate">
         <div class="container mx-auto px-6 md:px-12">
             <blockquote class="text-2xl md:text-3xl italic font-medium text-gray-900 leading-relaxed max-w-3xl mx-auto">
                 "Setiap langkah adalah bagian dari perjalanan. Di Baneex Indonesia, kami percaya bahwa potensi terbesar Anda menanti untuk ditemukan dan dikembangkan."
@@ -173,8 +187,8 @@
         </div>
     </section>
 
-    <!-- About Us Section - White background -->
-    <section id="about-us" class="relative py-16 md:py-24 bg-white bg-cover bg-center" style="background-image: url('https://media.licdn.com/dms/image/v2/C561BAQH6RxrJ0jX4XQ/company-background_10000/company-background_10000/0/1604863610557/pt_baneex_indonesia_cover?e=2147483647&v=beta&t=EOT88J1I6ATRAfdGk4MlK_D4hDpPOvHfP2Ktgd-d0II');">
+    <!-- About Us Section - White background, animated on scroll -->
+    <section id="about-us" class="relative py-16 md:py-24 bg-white bg-cover bg-center scroll-animate" style="background-image: url('https://media.licdn.com/dms/image/v2/C561BAQH6RxrJ0jX4XQ/company-background_10000/company-background_10000/0/1604863610557/pt_baneex_indonesia_cover?e=2147483647&v=beta&t=EOT88J1I6ATRAfdGk4MlK_D4hDpPOvHfP2Ktgd-d0II');">
         <!-- Overlay for text readability -->
         <div class="absolute inset-0 bg-gray-900 opacity-70"></div>
         <div class="relative z-10 container mx-auto px-6 md:px-12 text-white">
@@ -195,8 +209,8 @@
         </div>
     </section>
 
-    <!-- Vision & Mission Section - Light orange to white gradient background -->
-    <section class="py-16 md:py-24 bg-gradient-to-br from-orange-50 to-white">
+    <!-- Vision & Mission Section - Light orange to white gradient background, animated on scroll -->
+    <section class="py-16 md:py-24 bg-gradient-to-br from-orange-50 to-white scroll-animate">
         <div class="container mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div class="text-center md:text-left">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
@@ -225,13 +239,13 @@
             </div>
             <!-- Image for Vision & Mission -->
             <div class="flex justify-center md:justify-end">
-                <img src="https://www.ilag-group.com/fileadmin/ueber_ILAG/mission_vision_values.jpg" alt="Visi Misi Baneex" class="rounded-xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all-ease">
+                <img src="https://www.ilag-group.com/fileadmin/ueber_ILAG/mission_vision_values.jpg" alt="Visi Misi Baneex" class="rounded-xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all-ease" loading="lazy">
             </div>
         </div>
     </section>
 
-    <!-- Why Join Us Section - White background, includes values, benefits, and testimonials -->
-    <section id="why-join-us" class="py-16 md:py-24 bg-white">
+    <!-- Why Join Us Section - White background, includes values, benefits, and testimonials, animated on scroll -->
+    <section id="why-join-us" class="py-16 md:py-24 bg-white scroll-animate">
         <div class="container mx-auto px-6 md:px-12">
             <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
                 Mengapa Bergabung dengan Baneex Indonesia?
@@ -270,7 +284,7 @@
                 </div>
             </div>
 
-            <!-- Benefits & Perks Sub-section -->
+            <!-- Manfaat & Tunjangan -->
             <div class="mb-16">
                 <h3 class="text-2xl md:text-3xl font-semibold text-center text-orange-700 mb-8">
                     Manfaat & Tunjangan
@@ -339,7 +353,7 @@
                 </div>
             </div>
 
-            <!-- Employee Testimonials Sub-section -->
+            <!-- Testimoni Karyawan -->
             <div>
                 <h3 class="text-2xl md:text-3xl font-semibold text-center text-orange-700 mb-8">
                     Kata Mereka yang Sudah Bergabung
@@ -347,21 +361,21 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Testimonial Card 1: Gengki Ananda -->
                     <div class="bg-orange-50 p-6 rounded-lg shadow-md flex flex-col items-center text-center hover:shadow-lg transition-all-ease">
-                        <img src="https://placehold.co/100x100/FFB347/000000?text=GA" alt="Foto Karyawan Gengki Ananda" class="w-24 h-24 rounded-full mb-4 object-cover border-4 border-orange-300">
+                        <img src="https://placehold.co/100x100/FFB347/000000?text=GA" alt="Foto Karyawan Gengki Ananda" class="w-24 h-24 rounded-full mb-4 object-cover border-4 border-orange-300" loading="lazy">
                         <p class="text-base italic text-gray-800 mb-4">"Baneex Indonesia telah memberikan saya kesempatan luar biasa untuk mengembangkan karir. Lingkungan kerja yang suportif dan budaya inovatif adalah nilai tambah yang besar!"</p>
                         <p class="font-semibold text-gray-900">- Gengki Ananda</p>
                         <p class="text-sm text-gray-600">Manajer Pemasaran</p>
                     </div>
                     <!-- Testimonial Card 2: Iwan -->
                     <div class="bg-orange-50 p-6 rounded-lg shadow-md flex flex-col items-center text-center hover:shadow-lg transition-all-ease">
-                        <img src="https://placehold.co/100x100/FFB347/000000?text=IW" alt="Foto Karyawan Iwan" class="w-24 h-24 rounded-full mb-4 object-cover border-4 border-orange-300">
+                        <img src="https://placehold.co/100x100/FFB347/000000?text=IW" alt="Foto Karyawan Iwan" class="w-24 h-24 rounded-full mb-4 object-cover border-4 border-orange-300" loading="lazy">
                         <p class="text-base italic text-gray-800 mb-4">"Di Baneex, saya terlibat langsung dalam pengembangan efisiensi produksi modern. Ini adalah tempat yang dinamis untuk berinovasi dan melihat dampak nyata dari pekerjaan saya."</p>
                         <p class="font-semibold text-gray-900">- Iwan</p>
                         <p class="text-sm text-gray-600">Spesialis Efisiensi Produksi</p>
                     </div>
                     <!-- Testimonial Card 3: Hotben Sinaga -->
                     <div class="bg-orange-50 p-6 rounded-lg shadow-md flex flex-col items-center text-center hover:shadow-lg transition-all-ease">
-                        <img src="https://placehold.co/100x100/FFB347/000000?text=HS" alt="Foto Karyawan Hotben Sinaga" class="w-24 h-24 rounded-full mb-4 object-cover border-4 border-orange-300">
+                        <img src="https://placehold.co/100x100/FFB347/000000?text=HS" alt="Foto Karyawan Hotben Sinaga" class="w-24 h-24 rounded-full mb-4 object-cover border-4 border-orange-300" loading="lazy">
                         <p class="text-base italic text-gray-800 mb-4">"Tim HR sangat responsif dan proses rekrutmennya transparan. Saya sangat senang menjadi bagian dari keluarga Baneex!"</p>
                         <p class="font-semibold text-gray-900">- Hotben Sinaga</p>
                         <p class="text-sm text-gray-600">Spesialis Rekrutmen</p>
@@ -371,8 +385,8 @@
         </div>
     </section>
 
-    <!-- Company Culture Section - Light gray background -->
-    <section id="culture" class="py-16 md:py-24 bg-gray-50">
+    <!-- Company Culture Section - Light gray background, animated on scroll -->
+    <section id="culture" class="py-16 md:py-24 bg-gray-50 scroll-animate">
         <div class="container mx-auto px-6 md:px-12">
             <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
                 Budaya Perusahaan Kami
@@ -391,7 +405,7 @@
                 </ul>
             </div>
 
-            <!-- "A Day at Baneex" employee stories -->
+            <!-- "Sehari di Baneex" -->
             <div>
                 <h3 class="text-2xl md:text-3xl font-semibold text-center text-orange-700 mb-8">
                     Sehari di Baneex: Kisah dari Karyawan Kami
@@ -414,8 +428,8 @@
         </div>
     </section>
 
-    <!-- Customer List Section - Light gray to white gradient background -->
-    <section id="customers" class="py-16 md:py-24 bg-gradient-to-tr from-gray-50 to-white">
+    <!-- Customer List Section - Light gray to white gradient background, animated on scroll -->
+    <section id="customers" class="py-16 md:py-24 bg-gradient-to-tr from-gray-50 to-white scroll-animate">
         <div class="container mx-auto px-6 md:px-12">
             <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
                 Daftar Pelanggan Kami
@@ -423,51 +437,51 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
                 <!-- Customer Card 1: PT. TS TECH INDONESIA (Logo Only) -->
                 <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease flex flex-col justify-center items-center">
-                    <img src="https://www.smkpgricikampek.sch.id/upload/imagecache/341998291pt.ts-tech1-800x800.jpeg" alt="Logo PT. TS TECH INDONESIA" class="mx-auto h-20 mb-2 object-contain">
+                    <img src="https://www.smkpgricikampek.sch.id/upload/imagecache/341998291pt.ts-tech1-800x800.jpeg" alt="Logo PT. TS TECH INDONESIA" class="mx-auto h-20 mb-2 object-contain" loading="lazy">
                 </div>
                 <!-- Customer Card 2: PT. ICHIKOH INDONESIA (Logo Only) -->
                 <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease flex flex-col justify-center items-center">
-                    <img src="https://www.sagateknindo.co.id/assets/adminlte/dist/img/customer/auto_component_ichikoh.png" alt="Logo PT. ICHIKOH INDONESIA" class="mx-auto h-20 mb-2 object-contain">
+                    <img src="https://www.sagateknindo.co.id/assets/adminlte/dist/img/customer/auto_component_ichikoh.png" alt="Logo PT. ICHIKOH INDONESIA" class="mx-auto h-20 mb-2 object-contain" loading="lazy">
                 </div>
                 <!-- Customer Card 3: PT. CIPTA MANDIRI WIRA SAKTI (Logo Only) -->
                 <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease flex flex-col justify-center items-center">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKKEczrJyzZhXW95-9GIVwZ-2OhWZU4HmjEgg49Bt69JQsa-yd3ao6SQGucipnZKdpMzR9ljHsgGPXfcRP6S2hwpPjqpVY5uCWP2vdb2RwgyxWVQxqMwoUAsd_MsfEZ-ZprFx_yQHgOOiAbzRf0GvbN7huNeDOFv9GAcI4JSJfSYFckjlnJMd3uru2/s3072/logo%20pt%20cmw%20-%20kilaskerja.com.webp" alt="Logo PT. CIPTA MANDIRI WIRA SAKTI" class="mx-auto h-20 mb-2 object-contain">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKKEczrJyzZhXW95-9GIVwZ-2OhWZU4HmjEgg49Bt69JQsa-yd3ao6SQGucipnZKdpMzR9ljHsgGPXfcRP6S2hwpPjqpVY5uCWP2vdb2RwgyxWVQxqMwoUAsd_MsfEZ-ZprFx_yQHgOOiAbzRf0GvbN7huNeDOFv9GAcI4JSJfSYFckjlnJMd3uru2/s3072/logo%20pt%20cmw%20-%20kilaskerja.com.webp" alt="Logo PT. CIPTA MANDIRI WIRA SAKTI" class="mx-auto h-20 mb-2 object-contain" loading="lazy">
                 </div>
                 <!-- Customer Card 4: PT. FUJI SPRING INDONESIA (Logo Only) -->
                 <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease flex flex-col justify-center items-center">
-                    <img src="https://informasigaji.com/wp-content/uploads/2024/09/Gaji-PT-Fuji-Spring-Indonesia-Terbaru-Lengkap-Semua-Posisi.jpg" alt="Logo PT. FUJI SPRING INDONESIA" class="mx-auto h-20 mb-2 object-contain">
+                    <img src="https://informasigaji.com/wp-content/uploads/2024/09/Gaji-PT-Fuji-Spring-Indonesia-Terbaru-Lengkap-Semua-Posisi.jpg" alt="Logo PT. FUJI SPRING INDONESIA" class="mx-auto h-20 mb-2 object-contain" loading="lazy">
                 </div>
                 <!-- Customer Card 5: PT. DARMA CONTROL CABLE INDONESIA (Logo Only) -->
                 <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease flex flex-col justify-center items-center">
-                    <img src="https://www.gokerja.id/wp-content/uploads/2022/06/Control-Cable.jpg" alt="Logo PT. DARMA CONTROL CABLE INDONESIA" class="mx-auto h-20 mb-2 object-contain">
+                    <img src="https://www.gokerja.id/wp-content/uploads/2022/06/Control-Cable.jpg" alt="Logo PT. DARMA CONTROL CABLE INDONESIA" class="mx-auto h-20 mb-2 object-contain" loading="lazy">
                 </div>
                 <!-- Customer Card 6: PT. INDOMATSUMOTO (Logo Only) -->
                 <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease flex flex-col justify-center items-center">
-                    <img src="https://kisarangaji.com/wp-content/uploads/2024/02/pt-indomatsumoto.jpg" alt="Logo PT. INDOMATSUMOTO" class="mx-auto h-20 mb-2 object-contain">
+                    <img src="https://kisarangaji.com/wp-content/uploads/2024/02/pt-indomatsumoto.jpg" alt="Logo PT. INDOMATSUMOTO" class="mx-auto h-20 mb-2 object-contain" loading="lazy">
                 </div>
                 <!-- Customer Card 7: PT. MEKAR ARMADA JAYA (Logo Only) -->
                 <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease flex flex-col justify-center items-center">
-                    <img src="https://media.licdn.com/dms/image/v2/C560BAQEB0_yJj0xebQ/company-logo_200_200/company-logo_200_200/0/1630663326380/pt_mekar_armada_jaya_logo?e=2147483647&v=beta&t=9xBxr2aEB3nJcWSRXBtgoogKDQ84trqVoxf7IsKJvyI" alt="Logo PT. MEKAR ARMADA JAYA" class="mx-auto h-20 mb-2 object-contain">
+                    <img src="https://media.licdn.com/dms/image/v2/C560BAQEB0_yJj0xebQ/company-logo_200_200/company-logo_200_200/0/1630663326380/pt_mekar_armada_jaya_logo?e=2147483647&v=beta&t=9xBxr2aEB3nJcWSRXBtgoogKDQ84trqVoxf7IsKJvyI" alt="Logo PT. MEKAR ARMADA JAYA" class="mx-auto h-20 mb-2 object-contain" loading="lazy">
                 </div>
                 <!-- Customer Card 8: PT. INTI POLYMETAL (Logo Only) -->
                 <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease flex flex-col justify-center items-center">
-                    <img src="https://kisarangaji.com/wp-content/uploads/2024/07/Gaji-PT-Inti-Polymetal.jpg" alt="Logo PT. INTI POLYMETAL" class="mx-auto h-20 mb-2 object-contain">
+                    <img src="https://kisarangaji.com/wp-content/uploads/2024/07/Gaji-PT-Inti-Polymetal.jpg" alt="Logo PT. INTI POLYMETAL" class="mx-auto h-20 mb-2 object-contain" loading="lazy">
                 </div>
                 <!-- Customer Card 9: PT. ASIA AFRIKA PLASTIK (Logo Only) -->
                 <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease flex flex-col justify-center items-center">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxfeRIA2Qf5GvUv-r-8j1K-JoiZgx6n4o6lQ&s" alt="Logo PT. ASIA AFRIKA PLASTIK" class="mx-auto h-20 mb-2 object-contain">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxfeRIA2Qf5GvUv-r-8j1K-JoiZgx6n4o6lQ&s" alt="Logo PT. ASIA AFRIKA PLASTIK" class="mx-auto h-20 mb-2 object-contain" loading="lazy">
                 </div>
                 <!-- Customer Card 10: PT. METINDO ERA SAKTI (Logo Only) -->
                 <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease flex flex-col justify-center items-center">
-                    <img src="https://cdn.brandfetch.io/metindo.co.id/fallback/lettermark/theme/dark/h/256/w/256/icon?c=1bfwsmEH20zzEfSNTed" alt="Logo PT. METINDO ERA SAKTI" class="mx-auto h-20 mb-2 object-contain">
+                    <img src="https://cdn.brandfetch.io/metindo.co.id/fallback/lettermark/theme/dark/h/256/w/256/icon?c=1bfwsmEH20zzEfSNTed" alt="Logo PT. METINDO ERA SAKTI" class="mx-auto h-20 mb-2 object-contain" loading="lazy">
                 </div>
                 <!-- Customer Card 11: PT. RACHMAT PERDANA ADHIMETAL (Logo Only) -->
                 <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease flex flex-col justify-center items-center">
-                    <img src="https://rachmatperdana.co.id/wp-content/uploads/2018/09/LOGO-RPA2-mini.jpg" alt="Logo PT. RACHMAT PERDANA ADHIMETAL" class="mx-auto h-20 mb-2 object-contain">
+                    <img src="https://rachmatperdana.co.id/wp-content/uploads/2018/09/LOGO-RPA2-mini.jpg" alt="Logo PT. RACHMAT PERDANA ADHIMETAL" class="mx-auto h-20 mb-2 object-contain" loading="lazy">
                 </div>
                 <!-- Customer Card 12: PT. SARANA UNGGUL PRATAMA (Logo Only) -->
                 <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease flex flex-col justify-center items-center">
-                    <img src="https://mardizu.co.id/assets/images/client/Logo-SUP1.jpg" alt="Logo PT. SARANA UNGGUL PRATAMA" class="mx-auto h-20 mb-2 object-contain">
+                    <img src="https://mardizu.co.id/assets/images/client/Logo-SUP1.jpg" alt="Logo PT. SARANA UNGGUL PRATAMA" class="mx-auto h-20 mb-2 object-contain" loading="lazy">
                 </div>
                 <!-- Customer Card 13: PT. ANUGRAH CIPTA 9 (Text Only, as requested) -->
                 <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease">
@@ -475,22 +489,22 @@
                 </div>
                 <!-- Customer Card 14: PT. TRI CENTRUM FORTUNA (Logo Only) -->
                 <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease flex flex-col justify-center items-center">
-                    <img src="https://media.licdn.com/dms/image/v2/C560BAQFGpozhkDIYvQ/company-logo_200_200/company-logo_200_200/0/1634529279870/tri_centrum_fortuna_logo?e=2147483647&v=beta&t=Lxg-imvCmkIdnIdIHQRTcKvoxHRTCfSUq2V0ryH0dNc" alt="Logo PT. TRI CENTRUM FORTUNA" class="mx-auto h-20 mb-2 object-contain">
+                    <img src="https://media.licdn.com/dms/image/v2/C560BAQFGpozhkDIYvQ/company-logo_200_200/company-logo_200_200/0/1634529279870/tri_centrum_fortuna_logo?e=2147483647&v=beta&t=Lxg-imvCmkIdnIdIHQRTcKvoxHRTCfSUq2V0ryH0dNc" alt="Logo PT. TRI CENTRUM FORTUNA" class="mx-auto h-20 mb-2 object-contain" loading="lazy">
                 </div>
                 <!-- Customer Card 15: PT. DAECHANG (Logo Only) -->
                 <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease flex flex-col justify-center items-center">
-                    <img src="https://media.cakeresume.com/image/upload/s--mMMAeya3--/c_pad,fl_png8,h_400,w_400/v1710745807/rcjzwc0fuarikkjuc5ul.png" alt="Logo PT. DAECHANG" class="mx-auto h-20 mb-2 object-contain">
+                    <img src="https://media.cakeresume.com/image/upload/s--mMMAeya3--/c_pad,fl_png8,h_400,w_400/v1710745807/rcjzwc0fuarikkjuc5ul.png" alt="Logo PT. DAECHANG" class="mx-auto h-20 mb-2 object-contain" loading="lazy">
                 </div>
                 <!-- New Customer Card 16: PT. TRIX (Added as requested) -->
                 <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease flex flex-col justify-center items-center">
-                    <img src="https://storage.bkkbisa.net/company_logo/NeZq4ZYFkUQm0Gv3PVJkn99eut5V83.jpg" alt="Logo PT. TRIX" class="mx-auto h-20 mb-2 object-contain">
+                    <img src="https://storage.bkkbisa.net/company_logo/NeZq4ZYFkUQm0Gv3PVJkn99eut5V83.jpg" alt="Logo PT. TRIX" class="mx-auto h-20 mb-2 object-contain" loading="lazy">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Recruitment Process Section - Light orange to white gradient background -->
-    <section class="py-16 md:py-24 bg-gradient-to-tl from-orange-50 to-white">
+    <!-- Recruitment Process Section - Light orange to white gradient background, animated on scroll -->
+    <section class="py-16 md:py-24 bg-gradient-to-tl from-orange-50 to-white scroll-animate">
         <div class="container mx-auto px-6 md:px-12">
             <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
                 Proses Rekrutmen yang Transparan
@@ -550,14 +564,14 @@
         </div>
     </section>
 
-    <!-- Job Search & Listings Section - White background -->
-    <section id="jobs" class="py-16 md:py-24 bg-white">
+    <!-- Job Search & Listings Section - White background, animated on scroll -->
+    <section id="jobs" class="py-16 md:py-24 bg-white scroll-animate">
         <div class="container mx-auto px-6 md:px-12">
             <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
                 Temukan Lowongan Karir Anda
             </h2>
 
-            <!-- Job Search Bar and Filters -->
+            <!-- Bilah Pencarian dan Filter Lowongan -->
             <div class="max-w-4xl mx-auto bg-orange-50 p-6 rounded-lg shadow-md mb-12">
                 <div class="flex flex-col md:flex-row gap-4 mb-4">
                     <input type="text" placeholder="Cari posisi atau kata kunci..." class="flex-grow p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 text-base">
@@ -581,10 +595,10 @@
                 </button>
             </div>
 
-            <!-- Job Listings Grid -->
+            <!-- Daftar Lowongan -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Job Card 1: Production Supervisor -->
-                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-orange-500 hover:shadow-lg hover:scale-105 transition-all-ease flex flex-col justify-between">
+                <!-- Kartu Lowongan 1: Produksi -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-orange-500 hover:shadow-lg hover:scale-105 transition-all-ease">
                     <div>
                         <h3 class="text-xl font-semibold text-gray-900 mb-2">Supervisor Produksi</h3>
                         <p class="text-base text-gray-700 mb-4">Bertanggung jawab mengawasi dan mengkoordinasikan kegiatan produksi untuk mencapai target efisiensi dan kualitas.</p>
@@ -596,8 +610,8 @@
                         <a href="https://forms.gle/McCCuXuxBaHWFkxb9" target="_blank" class="block mt-4 text-orange-600 hover:text-orange-800 font-medium">Lamar Sekarang &rarr;</a>
                     </div>
                 </div>
-                <!-- Job Card 2: HR & GA Staff -->
-                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-orange-500 hover:shadow-lg hover:scale-105 transition-all-ease flex flex-col justify-between">
+                <!-- Kartu Lowongan 2: Manajemen HR -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-orange-500 hover:shadow-lg hover:scale-105 transition-all-ease">
                     <div>
                         <h3 class="text-xl font-semibold text-gray-900 mb-2">Staf HR & GA</h3>
                         <p class="text-base text-gray-700 mb-4">Mendukung kegiatan administrasi HR dan general affairs, termasuk rekrutmen dan kepatuhan.</p>
@@ -609,8 +623,8 @@
                         <a href="https://forms.gle/McCCuXuxBaHWFkxb9" target="_blank" class="block mt-4 text-orange-600 hover:text-orange-800 font-medium">Lamar Sekarang &rarr;</a>
                     </div>
                 </div>
-                <!-- Job Card 3: Junior Accountant -->
-                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-orange-500 hover:shadow-lg hover:scale-105 transition-all-ease flex flex-col justify-between">
+                <!-- Kartu Lowongan 3: Manajemen Akuntansi -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-orange-500 hover:shadow-lg hover:scale-105 transition-all-ease">
                     <div>
                         <h3 class="text-xl font-semibold text-gray-900 mb-2">Akuntan Junior</h3>
                         <p class="text-base text-gray-700 mb-4">Melakukan pencatatan transaksi keuangan, penyusunan laporan, dan tugas akuntansi lainnya.</p>
@@ -622,8 +636,8 @@
                         <a href="https://forms.gle/McCCuXuxBaHWFkxb9" target="_blank" class="block mt-4 text-orange-600 hover:text-orange-800 font-medium">Lamar Sekarang &rarr;</a>
                     </div>
                 </div>
-                <!-- Job Card 4: Digital Marketing Specialist -->
-                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-orange-500 hover:shadow-lg hover:scale-105 transition-all-ease flex flex-col justify-between">
+                    <!-- Kartu Lowongan 4: Manajemen Pemasaran -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-orange-500 hover:shadow-lg hover:scale-105 transition-all-ease">
                     <div>
                         <h3 class="text-xl font-semibold text-gray-900 mb-2">Spesialis Pemasaran Digital</h3>
                         <p class="text-base text-gray-700 mb-4">Merencanakan dan melaksanakan strategi pemasaran digital untuk meningkatkan visibilitas perusahaan.</p>
@@ -635,8 +649,8 @@
                         <a href="https://forms.gle/McCCuXuxBaHWFkxb9" target="_blank" class="block mt-4 text-orange-600 hover:text-orange-800 font-medium">Lamar Sekarang &rarr;</a>
                     </div>
                 </div>
-                <!-- Job Card 5: Quality Control Inspector -->
-                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-orange-500 hover:shadow-lg hover:scale-105 transition-all-ease flex flex-col justify-between">
+                <!-- Kartu Lowongan 5: Quality Control -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-orange-500 hover:shadow-lg hover:scale-105 transition-all-ease">
                     <div>
                         <h3 class="text-xl font-semibold text-gray-900 mb-2">Inspektor Quality Control</h3>
                         <p class="text-base text-gray-700 mb-4">Melakukan inspeksi kualitas produk di setiap tahap produksi untuk memastikan standar terpenuhi.</p>
@@ -648,8 +662,8 @@
                         <a href="https://forms.gle/McCCuXuxBaHWFkxb9" target="_blank" class="block mt-4 text-orange-600 hover:text-orange-800 font-medium">Lamar Sekarang &rarr;</a>
                     </div>
                 </div>
-                <!-- Job Card 6: Warehouse Admin -->
-                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-orange-500 hover:shadow-lg hover:scale-105 transition-all-ease flex flex-col justify-between">
+                <!-- Kartu Lowongan 6: Admin Warehouse -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-orange-500 hover:shadow-lg hover:scale-105 transition-all-ease">
                     <div>
                         <h3 class="text-xl font-semibold text-gray-900 mb-2">Admin Warehouse</h3>
                         <p class="text-base text-gray-700 mb-4">Mengelola data inventaris, mengatur pengiriman, dan memastikan kelancaran operasional gudang.</p>
@@ -662,8 +676,8 @@
                     </div>
                 </div>
 
-                <!-- Job Card 7: Maintenance Staff -->
-                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-orange-500 hover:shadow-lg hover:scale-105 transition-all-ease flex flex-col justify-between">
+                <!-- Kartu Lowongan 7: Maintenance -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-orange-500 hover:shadow-lg hover:scale-105 transition-all-ease">
                     <div>
                         <h3 class="text-xl font-semibold text-gray-900 mb-2">Staf Maintenance</h3>
                         <p class="text-base text-gray-700 mb-4">Bertanggung jawab untuk pemeliharaan mesin dan fasilitas pabrik untuk memastikan operasional yang lancar.</p>
@@ -676,8 +690,8 @@
                     </div>
                 </div>
 
-                <!-- Job Card 8: Internship Program -->
-                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-orange-500 hover:shadow-lg hover:scale-105 transition-all-ease flex flex-col justify-between">
+                <!-- Kartu Lowongan 8: Pemagangan -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-orange-500 hover:shadow-lg hover:scale-105 transition-all-ease">
                     <div>
                         <h3 class="text-xl font-semibold text-gray-900 mb-2">Program Pemagangan</h3>
                         <p class="text-base text-gray-700 mb-4">Kesempatan bagi mahasiswa atau umum untuk mendapatkan pengalaman kerja praktis di berbagai departemen kami.</p>
@@ -690,7 +704,7 @@
                     </div>
                 </div>
             </div>
-            <!-- "View All Jobs" Button -->
+            <!-- Tombol Lihat Semua Lowongan -->
             <div class="text-center mt-12">
                 <a href="https://forms.gle/McCCuXuxBaHWFkxb9" target="_blank" class="inline-block bg-gradient-main bg-gradient-main-hover text-white font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all-ease text-lg">
                     Lihat Semua Lowongan
@@ -699,29 +713,27 @@
         </div>
     </section>
 
-    <!-- ISO Certification Section - White background -->
-    <section id="certification" class="py-16 md:py-24 bg-white text-center">
+    <!-- Bagian Sertifikasi ISO, animated on scroll -->
+    <section id="certification" class="py-16 md:py-24 bg-white text-center scroll-animate">
         <div class="container mx-auto px-6 md:px-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
                 Sertifikasi Kami
             </h2>
             <div class="max-w-xl mx-auto bg-gray-100 p-8 rounded-lg shadow-lg border-2 border-green-500">
                 <div class="text-green-600 mb-4">
-                    <!-- Checkmark icon -->
                     <svg class="w-20 h-20 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </div>
                 <h3 class="text-2xl font-semibold text-gray-900 mb-4">ISO 9001:2015 Certified</h3>
                 <p class="text-base text-gray-700">
                     Baneex Indonesia bangga memiliki Sertifikat ISO 9001:2015, sebuah bukti komitmen kami terhadap standar mutu dan layanan terbaik.
                 </p>
-                <!-- Image for ISO certification -->
-                <img src="https://baneexindonesia.com/images/iso-baneex.jpg" alt="Sertifikat ISO 9001:2015" class="mt-6 mx-auto w-32 h-32 object-contain">
+                <img src="https://baneexindonesia.com/images/iso-baneex.jpg" alt="Sertifikat ISO 9001:2015" class="mt-6 mx-auto w-32 h-32 object-contain" loading="lazy">
             </div>
         </div>
     </section>
 
-    <!-- Call to Action Section - Main gradient background -->
-    <section class="py-16 md:py-24 bg-gradient-main text-white text-center">
+    <!-- Bagian Call to Action, animated on scroll -->
+    <section class="py-16 md:py-24 bg-gradient-main text-white text-center scroll-animate">
         <div class="container mx-auto px-6 md:px-12">
             <h2 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">
                 Mulai Perjalanan Anda Menuju Keunggulan Hari Ini!
@@ -729,14 +741,13 @@
             <p class="text-lg md:text-xl opacity-90 mb-8 max-w-2xl mx-auto">
                 Kami mencari individu berbakat dan bersemangat untuk bergabung dengan tim kami.
             </p>
-            <!-- Call to Action Button -->
             <a href="https://forms.gle/McCCuXuxBaHWFkxb9" target="_blank" class="inline-block bg-white text-orange-700 font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 hover:bg-gray-100 transition-all-ease text-lg">
                 Lamar Sekarang
             </a>
         </div>
     </section>
 
-    <!-- Footer Section - Dark background with company info, quick links, social media, and language options -->
+    <!-- Bagian Footer -->
     <footer id="contact" class="bg-gray-900 text-gray-300 py-12 px-6 md:px-12">
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Info Perusahaan -->
@@ -749,7 +760,7 @@
                 <p class="mt-4 text-base">
                     <a href="https://maps.app.goo.gl/FghXZB3djb5vk6Xq9" target="_blank" class="text-orange-400 hover:underline font-semibold">Lihat Lokasi Kami di Google Maps</a>
                 </p>
-                <img src="https://placehold.co/200x150/C0C0C0/333333?text=Google+Maps" alt="Lokasi Baneex Indonesia di Google Maps" class="mt-2 rounded-lg shadow-md">
+                <img src="https://placehold.co/200x150/C0C0C0/333333?text=Google+Maps" alt="Lokasi Baneex Indonesia di Google Maps" class="mt-2 rounded-lg shadow-md" loading="lazy">
             </div>
             <!-- Tautan Cepat -->
             <div>
@@ -851,6 +862,34 @@
         // Event listener for closing the mobile menu by clicking on the overlay
         mobileMenuOverlay.addEventListener('click', () => {
             closeMobileMenuButton.click(); // Simulates a click on the close button
+        });
+
+        // Intersection Observer for scroll animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const scrollAnimateElements = document.querySelectorAll('.scroll-animate');
+
+            const observerOptions = {
+                root: null, // viewport
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Add the Animate.css classes to trigger the animation
+                        entry.target.classList.add('animate__animated', 'animate__bounceInUp');
+                        // Remove the initial 'opacity:0' style if necessary for some specific elements
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target); // Stop observing once animated
+                    }
+                });
+            }, observerOptions);
+
+            scrollAnimateElements.forEach(element => {
+                observer.observe(element);
+            });
         });
     </script>
 </body>
