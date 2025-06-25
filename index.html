@@ -18,7 +18,7 @@
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden; /* Prevents horizontal scrolling, ensuring responsive layout */
+            overflow-x: hidden; /* Mencegah gulir horizontal, memastikan tata letak responsif */
         }
         /* Custom utility class for smooth transitions on hover effects */
         .transition-all-ease {
@@ -33,14 +33,14 @@
         }
         /* Styles for the mobile menu overlay, initially hidden */
         .mobile-menu-overlay {
-            background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+            background-color: rgba(0, 0, 0, 0.7); /* Latar belakang semi-transparan gelap */
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            z-index: 40; /* Placed below fixed header, above main content */
-            display: none; /* Hidden by default */
+            z-index: 40; /* Ditempatkan di bawah header tetap, di atas konten utama */
+            display: none; /* Tersembunyi secara default */
         }
         /* Class to show the overlay when mobile menu is active */
         .mobile-menu-active .mobile-menu-overlay {
@@ -48,23 +48,23 @@
         }
         /* Class to display the mobile menu by transforming its position */
         .mobile-menu-active #mobile-menu {
-            transform: translateX(0); /* Slides menu into view */
+            transform: translateX(0); /* Menggeser menu ke tampilan */
         }
 
         /* Custom gradient for text and elements, matching the brand's orange-to-red theme */
         .text-gradient {
-            background: linear-gradient(to right, #FF8C00, #FF004C); /* Orange to Red/Magenta */
-            -webkit-background-clip: text; /* Clips background to text for WebKit browsers */
-            -webkit-text-fill-color: transparent; /* Makes text transparent to show background */
-            background-clip: text; /* Standard for clipping background to text */
-            color: transparent; /* Fallback for browsers that don't support text-fill-color */
+            background: linear-gradient(to right, #FF8C00, #FF004C); /* Oranye ke Merah/Magenta */
+            -webkit-background-clip: text; /* Memotong latar belakang ke teks untuk browser WebKit */
+            -webkit-text-fill-color: transparent; /* Membuat teks transparan untuk menampilkan latar belakang */
+            background-clip: text; /* Standar untuk memotong latar belakang ke teks */
+            color: transparent; /* Fallback untuk browser yang tidak mendukung text-fill-color */
         }
 
         .bg-gradient-main {
-            background: linear-gradient(to right, #FF8C00, #FF004C); /* Main gradient for backgrounds */
+            background: linear-gradient(to right, #FF8C00, #FF004C); /* Gradien utama untuk latar belakang */
         }
         .bg-gradient-main-hover:hover {
-            background: linear-gradient(to right, #E07B00, #E00042); /* Slightly darker gradient on hover */
+            background: linear-gradient(to right, #E07B00, #E00042); /* Gradien sedikit lebih gelap saat hover */
         }
         /* Keyframe animation for hero section elements to fade in and slide up */
         @keyframes fade-in-up {
@@ -503,12 +503,6 @@
                 <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease flex flex-col justify-center items-center">
                     <img src="https://atmicikarang.ac.id/wp-content/uploads/2024/07/LOGO2-1-2000x1125.png" alt="Logo ATMI CIKARANG" class="mx-auto h-20 mb-2 object-contain" loading="lazy">
                 </div>
-                <!-- New Customer Card 18: PT CHIYODA INDUSTRY INDONESIA -->
-                <!-- Removed duplicate. This was the one that was repeated.
-                <div class="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-all-ease flex flex-col justify-center items-center">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvxeNnHJG2E1dKd22kYVXB_QvhxPYG6XflmNrXwWZJKHK5MbLZIjdpmyD7ecse0u_pB86UVMVcfjilqFYn4A6MxhDcqvzXolw0O4X8qHX-qRNxDh_x5Uq8M66HVeq6bTb8awOlJFUZbhs/s1600/Logo+PT+Chiyoda+Industry+Indonesia.jpg" alt="Logo PT CHIYODA INDUSTRY INDONESIA" class="mx-auto h-20 mb-2 object-contain" loading="lazy">
-                </div>
-                -->
             </div>
         </div>
     </section>
@@ -580,30 +574,6 @@
             <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
                 Temukan Lowongan Karir Anda
             </h2>
-
-            <!-- Bilah Pencarian dan Filter Lowongan -->
-            <div class="max-w-4xl mx-auto bg-orange-50 p-6 rounded-lg shadow-md mb-12">
-                <div class="flex flex-col md:flex-row gap-4 mb-4">
-                    <input type="text" placeholder="Cari posisi atau kata kunci..." class="flex-grow p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 text-base">
-                    <select class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 text-base">
-                        <option value="">Semua Bidang</option>
-                        <option value="produksi">Produksi</option>
-                        <option value="hr">Manajemen HR</option>
-                        <option value="akuntansi">Manajemen Akuntansi</option>
-                        <option value="pemasaran">Manajemen Pemasaran</option>
-                        <option value="quality-control">Quality Control</option>
-                        <option value="admin-warehouse">Admin Warehouse</option>
-                        <option value="maintenance">Maintenance</option>
-                        <option value="pemagangan">Pemagangan (Mahasiswa/Umum)</option>
-                    </select>
-                    <select class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 text-base">
-                        <option value="bekasi">Bekasi (Jl. Toyogiri)</option>
-                    </select>
-                </div>
-                <button class="w-full bg-gradient-main bg-gradient-main-hover text-white font-bold py-3 px-6 rounded-md shadow-lg transform hover:scale-105 transition-all-ease text-lg">
-                    Cari Lowongan
-                </button>
-            </div>
 
             <!-- Daftar Lowongan -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -714,12 +684,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Tombol Lihat Semua Lowongan -->
-            <div class="text-center mt-12">
-                <a href="https://forms.gle/McCCuXuxBaHWFkxb9" target="_blank" class="inline-block bg-gradient-main bg-gradient-main-hover text-white font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all-ease text-lg">
-                    Lihat Semua Lowongan
-                </a>
-            </div>
+            <!-- Removed the "Lihat Semua Lowongan" button -->
         </div>
     </section>
 
@@ -768,11 +733,11 @@
                 <p class="text-base mb-2">Jl. Toyogiri RT. 002 RW.03 – Kp.Legon Kel. Jatimulya Kec. Tambun Selatan. Kab. Bekasi</p>
                 <p class="text-base mb-2">Email Rekrutmen: <a href="mailto:rekrutmenptbaneexindonesia@gmail.com" class="text-orange-400 hover:underline">rekrutmenptbaneexindonesia@gmail.com</a></p>
                 <p class="text-base">Telepon: <a href="tel:+6281213102500" class="text-orange-400 hover:underline">0812-1310-2500</a></p>
-                <!-- Google Maps Link and Placeholder Image -->
+                <!-- Google Maps Link and Image -->
                 <p class="mt-4 text-base">
                     <a href="https://maps.app.goo.gl/FghXZB3djb5vk6Xq9" target="_blank" class="text-orange-400 hover:underline font-semibold">Lihat Lokasi Kami di Google Maps</a>
                 </p>
-                <img src="https://placehold.co/200x150/C0C0C0/333333?text=Google+Maps" alt="Lokasi Baneex Indonesia di Google Maps" class="mt-2 rounded-lg shadow-md" loading="lazy">
+                <img src="https://www.baneexindonesia.com/images/lokasi.jpg" alt="Lokasi Baneex Indonesia di Google Maps" class="mt-2 rounded-lg shadow-md" loading="lazy">
             </div>
             <!-- Tautan Cepat -->
             <div>
